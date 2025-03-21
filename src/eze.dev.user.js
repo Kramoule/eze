@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name           eze (dev)
-// @version        1.0.9.3
+// @version        1.0.9.4
 // @author         dnsev-h
 // @namespace      dnsev-h
 // @homepage       https://dnsev-h.github.io/eze/
@@ -21,6 +21,8 @@
 // @connect        exhentai.org
 // @connect        e-hentai.org
 // @connect        ehgt.org
+// @connect        exhentai55ld2wyap5juskbm67czulomrouspdacjamjeloj7ugjbsad.onion
+// @connect        hath.network
 // @connect        *
 // @icon           data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwAQMAAABtzGvEAAAABlBMVEUAAABmBhHV14kpAAAAAXRSTlMAQObYZgAAADFJREFUeAFjIB4w//9BLPWBgSLq//HH/w8QQYE18GOj6hgwKCBCpcDOZQaZQpgiGgAA0dhUnSJVLdEAAAAASUVORK5CYII=
 // ==/UserScript==
