@@ -2845,10 +2845,7 @@
 				// Find containers
 				if ((n = html.querySelector("#gdt")) !== null) {
 					// Image nodes
-					nodes = n.querySelectorAll(".gdtm");
-					if ((large = (nodes.length === 0))) {
-						nodes = n.querySelectorAll(".gdtl");
-					}
+					nodes = n.querySelectorAll("a");
 
 					// Current page
 					if ((n = html.querySelector(".ptt td.ptds")) !== null) {
@@ -2858,49 +2855,30 @@
 					// Scan all
 					for (i = 0; i < nodes.length; ++i) {
 						n = nodes[i];
+						n2 = n.querySelector("div")
 
 						// Create new image
 						image = create_blank_gallery_image_data();
 						image.page = page_id;
 
 						// Required size
-						if ((m = re_required_height.exec(n.getAttribute("style") || ""))) {
+						if ((m = re_required_height.exec(n2.getAttribute("style") || ""))) {
 							image.height_required = parseInt(m[1], 10);
 						}
 
-						if (large) {
-							// Elements
-							if ((n = n.querySelector("a")) !== null) {
-								image.url = n.getAttribute("href") || "";
+						image.url = n.getAttribute("href") || "";
 
-								if ((n2 = n.querySelector("img")) !== null) {
-									image.filename = n2.getAttribute("title") || "";
-									image.index = (parseInt(n2.getAttribute("alt") || "", 10) || 1) - 1;
-									image.thumbnail = n2.getAttribute("src") || "";
-								}
-							}
+						if (n2 !== null) {
+							image.filename = n2.getAttribute("title") || "";
+							image.index = (parseInt(n2.getAttribute("alt") || "", 10) || 1) - 1;
 						}
-						else {
-							// Elements
-							if (
-								(n = n.querySelector("div")) !== null &&
-								(n2 = n.querySelector("a")) !== null
-							) {
-								image.url = n2.getAttribute("href") || "";
 
-								if ((n2 = n2.querySelector("img")) !== null) {
-									image.filename = n2.getAttribute("title") || "";
-									image.index = (parseInt(n2.getAttribute("alt") || "", 10) || 1) - 1;
-								}
-
-								if ((m = re_image_url.exec(n.getAttribute("style") || ""))) {
-									// Setup image
-									image.thumbnail = m[3];
-									image.width = parseInt(m[1], 10);
-									image.height = parseInt(m[2], 10);
-									image.x_offset = parseInt(m[4], 10);
-								}
-							}
+						if ((m = re_image_url.exec(n2.getAttribute("style") || ""))) {
+							// Setup image
+							image.thumbnail = m[3];
+							image.width = parseInt(m[1], 10);
+							image.height = parseInt(m[2], 10);
+							image.x_offset = parseInt(m[4], 10);
 						}
 
 						// Add image
